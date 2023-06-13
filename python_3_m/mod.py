@@ -6,4 +6,3 @@ def get_int(string):
             return n
         except ValueError:
             print("整数を入力してください。")
-
