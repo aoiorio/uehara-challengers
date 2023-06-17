@@ -20,6 +20,18 @@
   * a は https://github.com/aoiorio で、
   * m は https://github.com/moriyoshi-kasuga です。
 
+<details><summary>次からの修正点</summary>
+
+> **python_a_1 **
+
+にするべきだった
+なぜ先に頭文字を書くかは理由が三つあります
+
+- まず10以上(二桁)になると ** _ ** よりも候補が先に来てしまう
+- そして後ろを問いの番号にすることでブランチ作成やフォルダ作成などで後ろだけ変えればいいから便利
+- そしてなんかこっちの方が見やすかった
+</details>
+
 <details><summary>なぜフォルダーか</summary>
 
 - まずファイルだと非常に見栄えが悪い
