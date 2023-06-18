@@ -12,7 +12,7 @@ random_num = random.randrange(0, 100)
 
 if random_num >= 80:
     print("優")
-elif 60 <= random_num:
+elif 60 <= random_num < 80:
     print("良")
 else:
     print("可")
