@@ -52,6 +52,6 @@ print(duplication_list([1,2,3,4,5,6],[1,2,3,6]))
 print("【問題5：辞書】")
 
 def twice_dict(dictionary:dict) -> dict:
-    return dict(zip(dictionary.keys(),[i * 2 if isinstance(i,int) else i for i in dictionary.values()]))
+    return dict(zip(dictionary.keys(),[i * 2 if isinstance(i,float) else i for i in dictionary.values()]))
 
 print(twice_dict({1:10,2:"hello",10:100}))
