@@ -52,11 +52,9 @@ print("【問題4：マージ】")
 
 def list_merge(first:list,secound:list):
     merge = []
-    while(bool(first) or bool(secound)):
-        if bool(first):
-            merge.append(first.pop(0))
-        if bool(secound):
-            merge.append(secound.pop(0))
+    for i in range(min(len(first), len(secound))):
+        merge.append(first[i])
+        merge.append(secound[i])
     return merge
 
 print(list_merge([1,2,3,4,5,6],["a","b","c","d","e","f","g","h"]))
