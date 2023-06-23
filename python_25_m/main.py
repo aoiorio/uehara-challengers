@@ -114,20 +114,20 @@ class BlackJack():
                     dealer.print(False)
                     return
                 if num == 21:
-                    print("!! BLACK JACK !!")
+                    print("=====!! BLACK JACK !!=====")
                     break
                 continue
             print("=====ディーラー====")
             break
         dealer.print(False)
         if dealer.get_number() < 17:
-            print("===ディーラーがカードを引きます===")
+            print("==ディーラーがカードを引きます==")
             while True:
                 if dealer.get_number() >= 17:
                     break
                 self.hit(dealer)
                 dealer.print(False)
-        print("===勝敗===")
+        print("=====勝敗=====")
         num_d = dealer.get_number()
         num_p = player.get_number()
         if num_d > 21:
