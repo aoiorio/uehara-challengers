@@ -1,4 +1,5 @@
 import random
+import time
 from character import *
 from plugin import *
 
@@ -38,6 +39,7 @@ class BlackJack():
         dealer = self.dealer
         player.print(False)
         dealer.print(True)
+        time.sleep(1)
         print("=====プレイヤー=====")
         if player.get_number() == 21:
             print("==!! BLACK JACK !!==")
@@ -55,18 +57,22 @@ class BlackJack():
                     if num == 21:
                         print("==!! BLACK JACK !!==")
                         break
+                    time.sleep(1)
                     continue
                 break
         print("=====ディーラー====")
+        time.sleep(1)
         dealer.print(False)
         if dealer.get_number() < 17:
             print("==ディーラーがカードを引きます==")
             while True:
+                time.sleep(1)
                 if dealer.get_number() >= 17:
                     break
                 self.hit(dealer)
                 dealer.print(False)
         print("=====勝敗=====")
+        time.sleep(1)
         num_d = dealer.get_number()
         num_p = player.get_number()
         if num_p > 21 and num_d > 21:
@@ -93,6 +99,7 @@ class BlackJack():
                 print("あなたの勝ちです")
                 self.plugin.player_win()
         print("======== BLACK JACK END ========")
+        time.sleep(1)
         self.plugin.game_end()
             
     def hit(self,human:Player):
