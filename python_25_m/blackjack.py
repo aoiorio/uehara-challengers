@@ -61,7 +61,6 @@ class BlackJack():
                     continue
                 break
         print("=====ディーラー====")
-        time.sleep(1)
         dealer.print(False)
         if dealer.get_number() < 17:
             print("==ディーラーがカードを引きます==")
