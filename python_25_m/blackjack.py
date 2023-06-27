@@ -4,6 +4,7 @@ from character import *
 from plugin import *
 
 class BlackJack():
+
     def __init__(self) -> None:
         print("n NORMAL: 普通のBLACKJACKをプレイします")
         print("f FIVES: 五勝するまで終われま戦")
