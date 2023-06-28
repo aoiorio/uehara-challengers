@@ -12,32 +12,33 @@ class BlackJack():
         select = input("[n] or [f] or [m] (default n): ")
         match select:
             case "f":
-                print("555555 FIVES MODE 555555")
-                self.plugin: "PluginBase" = FivesPlugin(self)
+                print("SELECT FIVES MODE")
+                self.__plugin: "PluginBase" = FivesPlugin(self)
             case "m":
-                print("%%%%%% MONEY MODE %%%%%%%")
-                self.plugin: "PluginBase" = MoneyPlugin(self)
+                print("SELECT MONEY MODE")
+                self.__plugin: "PluginBase" = MoneyPlugin(self)
             case _:
-                print("nnnnnn NORMAL MODE nnnnnnn")
-                self.plugin: "PluginBase" = NormalPlugin(self)
+                print("SELECT NORMAL MODE")
+                self.__plugin: "PluginBase" = NormalPlugin(self)
         self.start()
 
     def arg_init(self):
-        self.tiles:list[str] = []
+        self.__tiles:list[str] = []
         for _ in range(4):
-            self.tiles.extend(["1","2","3","4","5","6","7","8","9","10","K","Q","J"])
-        self.player = Player()
-        self.dealer = Dealer()
-        for human in [self.player,self.dealer]:
+            self.__tiles.extend(["1","2","3","4","5","6","7","8","9","10","K","Q","J"])
+        self.__player = Player()
+        self.__dealer = Dealer()
+        for human in [self.__player,self.__dealer]:
             for _ in range(2):
                 self.hit(human)
 
     def start(self):
         self.arg_init()
         print("======== BLACK JACK START ========")
-        self.plugin.game_start()
-        player = self.player
-        dealer = self.dealer
+        self.__plugin.game_start()
+        player = self.__player
+        dealer = self.__dealer
+        print("=====CARDS=====")
         player.print(False)
         dealer.print(True)
         time.sleep(1)
@@ -77,30 +78,30 @@ class BlackJack():
         num_p = player.get_number()
         if num_p > 21 and num_d > 21:
             print("どちらもバーストです！引き分け")
-            self.plugin.player_draw()
+            self.__plugin.player_draw()
         elif num_p > 21:
             print("バースト負けです!")
-            self.plugin.player_lose()
+            self.__plugin.player_lose()
         elif num_d > 21:
             print("ディーラーがバーストしました")
             print("あなたの勝ちです")
-            self.plugin.player_win()
+            self.__plugin.player_win()
         elif num_d == num_p:
             print("引き分けです")
-            self.plugin.player_draw()
+            self.__plugin.player_draw()
         elif num_d > num_p:
             print("あなたの負けです")
-            self.plugin.player_lose()
+            self.__plugin.player_lose()
         else:
             if num_p == 21:
                 print("BLACKJACKでの勝ちです")
-                self.plugin.player_blackjack()
+                self.__plugin.player_blackjack()
             else:
                 print("あなたの勝ちです")
-                self.plugin.player_win()
+                self.__plugin.player_win()
         print("======== BLACK JACK END ========")
         time.sleep(1)
-        self.plugin.game_end()
+        self.__plugin.game_end()
             
     def hit(self,human:Player):
-        human.hit(self.tiles.pop(random.randint(0,len(self.tiles)-1)))
+        human.hit(self.__tiles.pop(random.randint(0,len(self.__tiles)-1)))
