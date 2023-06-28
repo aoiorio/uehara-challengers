@@ -60,14 +60,19 @@ class FivesPlugin(PluginBase):
     def __init__(self, game: "blackjack.BlackJack"):
         super().__init__(game)
         self.__wins = 0
+        self.__loses = 0
 
     def game_start(self) -> None:
-        print("今" + str(self.__wins) + "勝中です！あと"
-              + str(5-self.__wins) + "勝すれば終われます！")
+        print(f"You win = {self.__wins} , lose = {self.__loses}")
+        print(f"あと{5-self.__wins}勝すればあなたの勝ちです!")
+        print(f"そして{5-self.__loses}負するとあなたは負けます")
 
     def game_end(self) -> None:
         if self.__wins == 5:
             print("5回勝利したので終わりです")
+            quit()
+        if self.__loses == 5:
+            print("5回敗北したので終わりです")
             quit()
         print("あと" + str(5-self.__wins) + "勝してください")
         self._game.start()
@@ -84,7 +89,8 @@ class FivesPlugin(PluginBase):
         pass
 
     def player_lose(self) -> None:
-        pass
+        self.__loses += 1
+        print(f"{self.__loses}回目の敗北です！")
 
 class MoneyPlugin(PluginBase):
     def __init__(self, game: "blackjack.BlackJack"):
